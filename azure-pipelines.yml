@@ -34,6 +34,11 @@ steps:
   displayName: 'Install prerequisites'
 
 - script: |
+    python -m pip install flake8
+    flake8 .
+  displayName: 'Run lint tests'
+
+- script: |
     pushd '$(projectRoot)'
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   condition: succeededOrFailed()
